@@ -14,7 +14,7 @@ def train_val_data_process():
     # 定义数据集的路径
     ROOT_TRAIN = r'data/train'
     # 归一化处理，定义数据集的均值和标准差
-    normalize = transforms.Normalize(mean=[0.162, 0.151, 0.138], std=[0.058, 0.052, 0.047])
+    normalize = transforms.Normalize(mean=[0.17263485, 0.15147247, 0.14267451], std=[0.0736155, 0.06216329, 0.05930814])
     # 定义数据预处理的方式
     train_transform = transforms.Compose([transforms.Resize((224, 224)), transforms.ToTensor(), normalize])
     # 加载训练数据集

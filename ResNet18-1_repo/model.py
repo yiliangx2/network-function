@@ -6,10 +6,10 @@ class Residual(nn.Module):
     def __init__(self, input_channels, output_channels, use_1conv=False,strides=1):
         super(Residual, self).__init__()
         self.conv1 = nn.Conv2d(in_channels=input_channels, out_channels=output_channels, kernel_size=3, padding=1, stride=strides)
-        self.bn1 = nn.BatchNorm2d(out_channels=output_channels)
+        self.bn1 = nn.BatchNorm2d(output_channels)
         self.ReLU = nn.ReLU(inplace=True)
         self.conv2 = nn.Conv2d(in_channels=output_channels, out_channels=output_channels, kernel_size=3, padding=1)
-        self.bn2 = nn.BatchNorm2d(out_channels=output_channels)
+        self.bn2 = nn.BatchNorm2d(output_channels)
         if use_1conv:
             self.conv3 = nn.Conv2d(in_channels=input_channels, out_channels=output_channels, kernel_size=1, stride=strides)
         else:
@@ -30,7 +30,7 @@ class ResNet18(nn.Module):
         self.b1 = nn.Sequential(
             nn.Conv2d(in_channels=3, out_channels=64, kernel_size=7, stride=2, padding=3),
             nn.ReLU(inplace=True),
-            nn.BatchNorm2d(out_channels=64),
+            nn.BatchNorm2d(64),
             nn.MaxPool2d(kernel_size=3, stride=2, padding=1)
         )
         self.b2 = nn.Sequential(Residual(64, 64, use_1conv=False, strides=1), Residual(64, 64, use_1conv=False, strides=1))

@@ -7,7 +7,7 @@ from model import ResNet18, Residual
 
 def test_data_process():
     ROOT_TRAIN = r'data/test'
-    normalize = transforms.Normalize(mean=[0.162, 0.151, 0.138], std=[0.058, 0.052, 0.047])
+    normalize = transforms.Normalize(mean=[0.17263485, 0.15147247, 0.14267451], std=[0.0736155, 0.06216329, 0.05930814])
     test_transform = transforms.Compose([transforms.Resize((224, 224)), transforms.ToTensor(), normalize])
     test_data = ImageFolder(ROOT_TRAIN, transform=test_transform)
     test_dataloader = Data.DataLoader(dataset=test_data, batch_size=1, shuffle=False, num_workers=0)
